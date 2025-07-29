@@ -1,0 +1,138 @@
+/* Sidebar tổng thể */
+.sidebar {
+  width: 250px;
+  background-color: #00467f;
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 8px 0 0 8px;
+  overflow: hidden;
+}
+
+/* Header Sidebar */
+.sidebar__header {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  background: #00467f;
+  color: #ecf0f1;
+}
+
+.sidebar__logo {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Thông tin người dùng */
+.sidebar__profile {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: #00467f;
+}
+
+.sidebar__avatar {
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  margin-right: 20px;
+  border: 2px solid #ecf0f1;
+}
+
+.sidebar__name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ecf0f1;
+}
+
+.sidebar__role {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Navigation */
+.sidebar__nav {
+  flex-grow: 1;
+  padding-top: 20px;
+}
+
+.sidebar__nav-item {
+  padding: 12px 25px;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
+  color: white;
+}
+
+.sidebar__nav-item:hover {
+  background-color: #ff967a;
+}
+
+/* Trạng thái active cho sidebar__nav-item */
+.sidebar__nav-item.active {
+  background-color: #f26522; /* Màu nổi bật khi active */
+  color: white;
+  font-weight: 600;
+}
+
+/* Icon */
+.sidebar__icon {
+  margin-right: 12px;
+  font-size: 16px;
+}
+
+/* Submenu */
+.sidebar__nav-item.has-submenu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sidebar__nav-item-content {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar__chevron {
+  font-size: 12px;
+}
+
+.sidebar__submenu {
+  background-color: #003a66; /* Màu nền tối hơn cho submenu */
+  padding-left: 20px;
+}
+
+.sidebar__submenu-item {
+  width: 100%;
+  padding: 10px 25px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: white;
+}
+
+.sidebar__submenu-item:hover {
+  background-color: #ff967a;
+}
+
+.sidebar__submenu-item.active {
+  background-color: #f26522;
+  color: white;
+  font-weight: 600;
+}
+
+/* Đăng xuất */
+.sidebar__nav-item.logout {
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
