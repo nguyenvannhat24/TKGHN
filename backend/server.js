@@ -8,6 +8,10 @@ const orderRoutes = require("./routes/orders");
 const adminRoutes = require("./routes/admin");
 const { authenticateToken, restrictTo } = require("./middleware/auth");
 
+const client = require('prom-client');
+const register = new client.Registry();
+client.collectDefaultMetrics({ register });
+
 const app = express();
 
 app.use(express.json({ limit: "10mb" }));
@@ -30,6 +34,12 @@ app.use("/api/users", userRoutes);
 app.use("/api/orders", authenticateToken, restrictTo("user", "shipper"), orderRoutes);
 app.use("/api/admin", adminRoutes);
 
+app.get('/metrics', async (req, res) => {
+    res.set('Content-Type', register.contentType);
+    res.end(await register.metrics());
+});
+
+
 app.use((req, res, next) => {
     res.status(404).json({ message: "❌ Route không tồn tại!" });
 });
@@ -40,6 +50,8 @@ app.use((err, req, res, next) => {
 });
 
 const PORT = process.env.PORT || 5000;
+
+
 app.listen(PORT, () => {
     console.log(`✅ Backend running on port ${PORT}`);
     console.log(`Environment: ${process.env.NODE_ENV || "development"}`);
